@@ -1,3 +1,4 @@
+# start
 - hosts: localhost # vim /etc/ansible/hosts -> [locoalhost] localhost
   tasks:
   - ec2:
@@ -16,3 +17,23 @@
      region: us-east-1a
      vpc_subnet_id: subnet-0cfb2e021fd18a573
      assign_public_ip: yes
+     
+# stop
+
+
+- hosts: localhost
+  tasks:
+   - ec2:
+      aws_access_key: AKIATPXSXAWXNJBP533G
+      aws_secret_key: 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
+      image: ami-03ededff12e34e59e
+      instance_id: i-0cead73b72a504538
+      state: absent
+      wait: yes
+      wait_timeout: 500
+      region: us-east-1
+      vpc_subnet_id: subnet-0cfb2e021fd18a573
+      assign_public_ip: yes
+
+     
+
