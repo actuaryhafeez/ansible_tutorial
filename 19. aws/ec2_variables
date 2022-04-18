@@ -7,8 +7,8 @@
     region: us-east-1
   tasks:
   - ec2:
-     aws_access_key: AKIATPXSXAWXNJBP533G
-     aws_secret_key: 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
+     aws_access_key: *************************************
+     aws_secret_key: *********************************
      key_name: "{{keypair}}"
      group: "{{security_group}}"
      instance_type: "{{instance_type}}"
