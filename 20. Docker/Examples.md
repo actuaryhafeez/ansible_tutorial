@@ -1,1 +1,8 @@
-
+- hosts: all
+  tasks:
+  - name: Container present
+    docker_container:
+      name: mycontainer
+      state: present
+      image: ubuntu:14.04
+      command: sleep infinity
