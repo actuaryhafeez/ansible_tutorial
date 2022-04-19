@@ -1,0 +1,26 @@
+--- 
+- hosts: centos
+  become: yes
+  gather_facts: no
+  tasks:
+  - name: Install dependencies for docker
+    yum:
+      name: ['lvm2','yum-utils','device-mapper-persistent-data']
+      state: latest
+  - name: Adding the docker repo
+    shell: |
+      yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+  - name: Actually installing docker
+    yum:
+      name: ['docker-ce','docker-ce-cli','containerd.io']
+      state: latest
+  - name: Start and enable docker
+    service:
+      name: docker
+      state: started
+      enabled: yes
+  - name: Add ansible to the docker group
+    user:
+      name: ansible
+      group: docker
+      append: yes
